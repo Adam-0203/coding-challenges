@@ -12,3 +12,12 @@ Example:
 ```text
 Input:  aaaabbbcc
 Output: a4b3c2
+
+## Limitation with Digits
+
+⚠️ **Important:** This version **does not handle digits in the input correctly**.  
+
+**Example:**
+```text
+Input:  a11b
+Output: a112b
