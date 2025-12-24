@@ -5,7 +5,6 @@ This project implements **Huffman encoding**, a **lossless data compression algo
 
 The goal is to compress text data efficiently and then decode it back to its original form without losing any information. This project demonstrates the practical implementation of **tree-based encoding** and binary operations in Java.
 
-To test the code, you can run the `Main` class located in the `src/main/java/huffman/algorithm/` folder.
 ---
 
 ## Features
@@ -23,3 +22,5 @@ To test the code, you can run the `Main` class located in the `src/main/java/huf
 3. **Code Assignment**: Traverse the tree to assign **unique binary codes** to each character.  
 4. **Encoding**: Replace each character in the input text with its corresponding binary code to generate compressed data.  
 5. **Decoding**: Read the binary stream and traverse the Huffman tree to reconstruct the original text.
+
+To test the code, you can run the `Main` class located in the `src/main/java/huffman/algorithm/` folder.
