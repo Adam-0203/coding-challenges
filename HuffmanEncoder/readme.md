@@ -23,4 +23,4 @@ The goal is to compress text data efficiently and then decode it back to its ori
 4. **Encoding**: Replace each character in the input text with its corresponding binary code to generate compressed data.  
 5. **Decoding**: Read the binary stream and traverse the Huffman tree to reconstruct the original text.
 
-To test the code, you can run the `Main` class located in the `src/main/java/huffman/algorithm/` folder.
+**To test the code, you can run the `Main` class located in the `src/main/java/huffman/algorithm/` folder.**
