@@ -13,7 +13,6 @@ The goal is to compress text data efficiently and then decode it back to its ori
 - Encode text into a **compressed binary representation**  
 - Decode compressed data back to the **original text**  
 - **Visualization of the Huffman tree and codes** (in progress)  
-- Unit-tested components to ensure **correctness and reliability**  
 
 ---
 
