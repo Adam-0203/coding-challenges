@@ -26,7 +26,3 @@ The following algorithms are included:
 
 - **Method Comparison**  
   Visual comparison of convergence behavior between classical methods.
-
----
-
-## Folder Structure
