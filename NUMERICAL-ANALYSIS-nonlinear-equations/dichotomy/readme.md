@@ -1,98 +1,67 @@
 # Dichotomy (Bisection) Method
 
-## Overview
-This project implements the **Dichotomy method** (also called the **Bisection method**) to solve **nonlinear equations of the form**:
+## Description
+This module implements the **Dichotomy (Bisection) method** to find a numerical solution of a nonlinear equation:
 
-\[
 f(x) = 0
-\]
 
-It is a **robust and reliable** root-finding method based on interval subdivision.
+The method is based on repeatedly dividing an interval where the function changes sign.
 
 ---
 
-## Principle of the Method
-Given a continuous function \( f \) on an interval \([a, b]\) such that:
+## Method Principle
+Given a continuous function `f` on `[a, b]` such that:
 
-\[
-f(a) \cdot f(b) < 0
-\]
+f(a) · f(b) < 0
 
-there exists **at least one root** in the interval (Intermediate Value Theorem).
+There exists at least one root in the interval.
 
-The method:
-1. Computes the midpoint \( m = \frac{a+b}{2} \)
-2. Selects the subinterval where the sign change occurs
-3. Repeats until the desired tolerance is reached
+At each iteration:
+- Compute the midpoint `m = (a + b) / 2`
+- Keep the subinterval where the sign change occurs
+- Stop when the interval size is smaller than the tolerance
 
 ---
 
 ## Convergence
-- **Type:** Linear convergence 📉
-- **Guaranteed convergence** if assumptions are satisfied
-- **Slow** compared to Newton or Secant methods, but very stable
+- **Convergence type:** Linear
+- **Reliability:** Guaranteed if the sign condition is satisfied
+- **Speed:** Slow compared to Newton or Secant methods
 
 ---
 
 ## Implemented Functions
-
-Several test functions are included:
+The code includes several test functions:
 - Polynomial functions
 - Trigonometric function
 - Exponential function
 
-Examples:
+These functions are used to test robustness and convergence behavior.
+
+---
+
+## Main Functions
+
+### `dichotomie(f, a, b, tol)`
+Computes an approximation of a root of `f` in the interval `[a, b]`.
+
+**Parameters**
+- `f`: function to solve  
+- `a`, `b`: interval bounds  
+- `tol`: tolerance  
+
+**Returns**
+- Approximate root
+
+---
+
+### `error(f, a, b, tol, max_iter, correct_value)`
+Plots the distance between the numerical approximation and the exact root at each iteration.
+
+Used to visualize convergence.
+
+---
+
+## Example
 ```python
-x^2 - 2
-x^3 - x + 1
-sin(x) - 0.5
-exp(x) - 2
-# Dichotomy (Bisection) Method
-
-## Overview
-This project implements the **Dichotomy method** (also called the **Bisection method**) to solve **nonlinear equations of the form**:
-
-\[
-f(x) = 0
-\]
-
-It is a **robust and reliable** root-finding method based on interval subdivision.
-
----
-
-## Principle of the Method
-Given a continuous function \( f \) on an interval \([a, b]\) such that:
-
-\[
-f(a) \cdot f(b) < 0
-\]
-
-there exists **at least one root** in the interval (Intermediate Value Theorem).
-
-The method:
-1. Computes the midpoint \( m = \frac{a+b}{2} \)
-2. Selects the subinterval where the sign change occurs
-3. Repeats until the desired tolerance is reached
-
----
-
-## Convergence
-- **Type:** Linear convergence 📉
-- **Guaranteed convergence** if assumptions are satisfied
-- **Slow** compared to Newton or Secant methods, but very stable
-
----
-
-## Implemented Functions
-
-Several test functions are included:
-- Polynomial functions
-- Trigonometric function
-- Exponential function
-
-Examples:
-```python
-x^2 - 2
-x^3 - x + 1
-sin(x) - 0.5
-exp(x) - 2
+dichotomie(function, 1, 2, 1e-8)
