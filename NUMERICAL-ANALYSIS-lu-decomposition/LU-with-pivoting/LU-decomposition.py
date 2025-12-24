@@ -2,12 +2,10 @@ import numpy as np
 n = 5
 np.random.seed(5)
 
-
+piv = np.eye(n)
 A = np.round(5*np.random.randn(n,n)) #définition de la matrice A
 L = np.eye(n)  #définition de la matrice L
-
-
-
+safeA = A.copy()
 
 #définition de la matrice élémentaire M_i
 def M(i,A):
@@ -18,23 +16,31 @@ def M(i,A):
 
     return M
 
-
+def permuter_L(i,j,k):
+    for w in range(k):
+        L[i][w],L[j][w] = L[j][w],L[i][w]
+    
 # transformation de A en U = M*A
 def LU_factor(A):
-    matrix = A.copy()
     for i in range(1,n):
-        matrix = np.matmul(M(i,matrix),matrix)
+        indice_max = i-1
+        for k in range(i,n):
+            if abs(A[k][i-1])>abs(A[indice_max][i-1]):
+                indice_max = k
+        
+        A[[indice_max,i-1]] = A[[i-1,indice_max]]
+        piv[[indice_max,i-1]] = piv[[i-1,indice_max]]
+        if i>1:
+            permuter_L(indice_max,i-1,i-1)
+        
+        A = np.matmul(M(i,A),A)
 
-    return L, matrix #qui est devenu U (triangulaire supérieur)
+
+    return L, A #qui est devenu U (triangulaire supérieur)
     
 
 L, U = LU_factor(A)
+
 LfoisU = np.matmul(L,U)
-
-AmoinsLU = np.zeros((n,n))
-for i in range(n):
-    for j in range(n):
-        AmoinsLU[i][j] = A[i][j] - LfoisU[i][j]
-
-
-print(np.linalg.norm(AmoinsLU, 1))
+print(np.matmul(piv,safeA))
+print(LfoisU)
